@@ -1,0 +1,100 @@
+{
+    "Africa": {
+        "Northern Africa": {
+            "continent": "af",
+            "countries_included": ["Algeria", "Egypt", "Libya", "Morocco", "Tunisia", "Sahrawi"]
+        },
+        "Eastern Africa": {
+            "continent": "af",
+            "countries_included": ["Burundi", "Kenya", "Rwanda", "South Sudan", "Tanzania", "Uganda", "Djibouti", "Eritrea", "Ethiopia", "Somalia", "Comoros", "Madagascar", "Mauritius", "Mayotte", "Réunion", "Seychelles", "Socotra", "Sudan", "Malawi", "Mozambique", "Zambia", "Zimbabwe"]
+        },
+        "Middle Africa": {
+            "continent": "af",
+            "countries_included": ["Angola", "Cameroon", "Central African Republic", "Chad", "Congo", "Democratic Republic of the Congo", "Equatorial Guinea", "Gabon", "Rwanda", "São Tomé and Príncipe"]
+        },
+        "Southern Africa": {
+            "continent": "af",
+            "countries_included": ["Botswana", "Eswatini", "Lesotho", "Namibia", "South Africa"]
+        },
+        "Western Africa": {
+            "continent": "af",
+            "countries_included": ["Benin", "Burkina Faso", "Cote d'Ivoire", "Cape Verde", "Ivory Coast", "The Gambia", "Ghana", "Guinea", "Guinea-Bissau", "Liberia", "Mali", "Niger", "Nigeria", "Saint Helena", "Senegal", "Sierra Leone", "Togo"]
+        }
+    },
+    "Americas": {
+        "Caribbean": {
+            "continent": "am",
+            "countries_included": ["Anguilla", "Antingua and Barbuda", "Aruba", "Bahamas", "Barbados", "Bonaire", "Cuba", "Curacao", "Dominica", "Dominican Republic", "French Guiana", "Grenada", "Guadeloupe", "Guyana", "Haiti", "Jamaica", "Martinique", "Montserrat", "Panama", "Puerto Rico", "Quintana Roo", "Saba", "San Andrés and Providencia", "Saint Barthélemy", "Saint Kitts and Nevis", "Saint Lucia", "Saint Martin", "Saint Vincent and the Grenadines", "Sint Eustatius", "Sint Maarten", "Suriname", "Trinidad and Tobago", "Turks and Caicos Islands", "Virgin Islands"]
+        },
+        "Central America": {
+            "continent": "am",
+            "countries_included": ["Belize", "Costa Rica", "El Salvador", "Guatemala", "Honduras", "Nicaragua", "Panama"]
+        },
+        "South America": {
+            "continent": "am",
+            "countries_included": ["Argentina", "Bolivia", "Brazil", "Chile", "Colombia", "Ecuador", "Falkland Islands", "French Guiana", "Guyana", "Paraguay", "Peru", "South George and the South Sandwich Islands", "Suriname", "Uruguay", "Venezuela"]
+        },
+        "Northern America": {
+            "continent": "am",
+            "countries_included": ["Bermuda", "Canada", "Greenland", "Mexico", "Saint Pierre and Miquelon", "United States"]
+        }
+    },
+    "Asia": {
+        "Central Asia": {
+            "continent": "as",
+            "countries_included": ["Kazakhstan", "Kyrgyzstan", "Tajikistan", "Turkmenistan", "Uzbekistan"]
+        },
+        "Eastern Asia": {
+            "continent": "as",
+            "countries_included": ["China", "Hong Kong", "Japan", "Macau", "Mongolia", "North Korea", "South Korea", "Taiwan"]
+        },
+        "South-eastern Asia": {
+            "continent": "as",
+            "countries_included": ["Brunei", "Cambodia", "East Timor", "Indonesia", "Laos", "Malaysia", "Myanmar", "Philippines", "Singapore", "Thailand", "Vietnam"]
+        },
+        "Southern Asia": {
+            "continent": "as",
+            "countries_included": ["Afghanistan", "Bangladesh", "Bhutan", "India", "Maldives", "Nepal", "Pakistan", "Sri Lanka"]
+        },
+        "Western Asia": {
+            "continent": "as",
+            "countries_included": ["Armenia", "Azerbaijan", "Bahrain", "Cyprus", "Georgia", "Iran", "Iraq", "Israel", "Jordan", "Kuwait", "Lebanon", "Oman", "Palestine", "Quatar", "Saudi Arabia", "Syria", "Turkey", "United Arab Emirates", "Yemen"]
+        }
+    },
+    "Europe": {
+        "Eastern Europe": {
+            "continent": "eu",
+            "countries_included": ["Belarus", "Bulgaria", "Czech Republic", "Hungary", "Moldova", "Poland", "Romania", "Slovakia", "Ukraine", "Russia"]
+        },
+        "Northern Europe": {
+            "continent": "eu",
+            "countries_included": ["Denmark", "Estonia", "Faroe Islands", "Finland", "Greenland", "Iceland", "Ireland", "Latvia", "Lithuania", "Norway", "Scotland", "Sweden", "United Kingdom", "Wales"]
+        },
+        "Southern Europe": {
+            "continent": "eu",
+            "countries_included": ["Albania", "Andorra", "Bosnia and Herzegovina", "Croatia", "Cyprus", "Gibraltar", "Greece", "Italy", "Kosovo", "North Macedonia", "Malta", "Moncao", "Montenegro", "Portugal", "San Marino", "Serbia", "Slovenia", "Spain", "Turkey", "Vatican City"]
+        },
+        "Western Europe": {
+            "continent": "eu",
+            "countries_included": ["Austria", "Belgium","France", "Germany", "Liechtenstein", "Luxembourg", "Netherlands", "Switzerland"]
+        }
+    },
+    "Oceania": {
+        "Australia and New Zealand": {
+            "continent": "oc",
+            "countries_included": ["Australia", "New Zealand"]
+        },
+        "Melanesia": {
+            "continent": "oc",
+            "countries_included": ["Fiji", "New Caledonia", "Papua New Guinea", "Solomon Islands", "Vanuatu"]
+        },
+        "Micronesia": {
+            "continent": "oc",
+            "countries_included": ["Guam", "Kiribati", "Marshall Islands", "Nauru", "Northern Mariana Islands", "Palau"]
+        },
+        "Polynesia": {
+            "continent": "oc",
+            "countries_included": ["American Samoa", "Cook Islands", "Easter Island", "French Polynesia", "Hawaii", "Niue", "Pitcairn Islands", "Samoa", "Tokelau", "Tonga", "Tuvalu", "Wallis and Futuna"]
+        }
+    }
+}
