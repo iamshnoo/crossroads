@@ -4,6 +4,37 @@ Code and assets for the Crossroads project.
 
 DALLE Street dataset: https://huggingface.co/datasets/iamshnoo/dallestreet
 
+## Data Availability
+
+The local project archives used for this work are now published as GitHub release assets:
+
+- Release: `data-assets-2026-03-30`
+- URL: `https://github.com/iamshnoo/crossroads/releases/tag/data-assets-2026-03-30`
+
+Because GitHub release assets must be smaller than 2 GiB each, the archives are split into numbered parts:
+
+- `backup.tar.gz.part001` ... `backup.tar.gz.part015`
+- `dataset_dollarstreet.tar.gz.part001` ... `dataset_dollarstreet.tar.gz.part051`
+
+After downloading all parts, reconstruct them locally with:
+
+```bash
+cat backup.tar.gz.part* > backup.tar.gz
+cat dataset_dollarstreet.tar.gz.part* > dataset_dollarstreet.tar.gz
+```
+
+Verify integrity with:
+
+```bash
+sha256sum backup.tar.gz
+sha256sum dataset_dollarstreet.tar.gz
+```
+
+Expected SHA-256 values:
+
+- `backup.tar.gz`: `94ba8c7e4c5413c5db31e6b8fa88c648d6bc0fe1e82ab2642398dda719396cff`
+- `dataset_dollarstreet.tar.gz`: `cff780f4418bd40ae60aa7ed3a7fa3619d25de30e2178c94f8e63b9b1c92a97f`
+
 ## Repository Status
 
 This checkout contains the top-level analysis and generation scripts plus the recovered `evals/` helper scripts and example edit config, but it still does not include the full `results/`, `corrected/`, or `marvl/` trees that several scripts expect.
