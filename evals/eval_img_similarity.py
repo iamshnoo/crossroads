@@ -19,6 +19,9 @@
 # target_image = load_image(TARGET_PATH)
 
 import os
+import sys
+from pathlib import Path
+
 import torch
 from transformers import ViTImageProcessor, ViTModel
 import PIL
@@ -26,6 +29,12 @@ from PIL import Image
 import torch.nn.functional as F
 import pandas as pd
 from tqdm import tqdm
+
+ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from project_paths import data_root, edits_cache_dir
 
 # Function to load and preprocess an image
 def load_image(path):
@@ -79,17 +88,18 @@ def find_image_similarities(df, base_path, model, processor, device):
 # Main function
 def main(method_name="cap_edit"):
     device = "cuda" if torch.cuda.is_available() else "cpu"
+    cache_dir = edits_cache_dir()
 
     # Load the model and processor
-    processor = ViTImageProcessor.from_pretrained('facebook/dino-vitb8', cache_dir="/projects/antonis/anjishnu/edits")
-    model = ViTModel.from_pretrained('facebook/dino-vitb8', cache_dir="/projects/antonis/anjishnu/edits").eval().to(device)
+    processor = ViTImageProcessor.from_pretrained('facebook/dino-vitb8', cache_dir=str(cache_dir))
+    model = ViTModel.from_pretrained('facebook/dino-vitb8', cache_dir=str(cache_dir)).eval().to(device)
 
     # Load dataframe
     method = method_name
     df = pd.read_csv("results/pnp_metrics.csv") if method == "cap_edit" else pd.read_csv("results/cultureadapt_metrics.csv")
     sim_resuls_df = df.copy()
 
-    base_path = "/scratch/amukher6/dollar_street/"
+    base_path = str(data_root())
     similarities = find_image_similarities(df, base_path, model, processor, device)
     # for src, tgt, sim in similarities:
     #     print(f"Source: {src}, Target: {tgt}, Similarity: {sim}")

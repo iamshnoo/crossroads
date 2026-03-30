@@ -3,15 +3,14 @@ import json
 import requests
 from openai import AzureOpenAI
 import argparse
+from project_paths import load_secrets
 
 parser = argparse.ArgumentParser(description="Generate images using Azure OpenAI.")
 parser.add_argument("--category", type=str, default="car", help="Category of images to generate")
 args = parser.parse_args()
 
 
-# Load secrets
-with open("secrets.json", "r") as f:
-    secrets = json.load(f)
+secrets = load_secrets()
 
 # Initialize the Azure OpenAI client
 client = AzureOpenAI(

@@ -3,9 +3,9 @@ from openai import AzureOpenAI
 import json
 import pandas as pd
 from tqdm import tqdm
+from project_paths import load_secrets
 
-with open("secrets.json", "r") as f:
-    secrets = json.load(f)
+secrets = load_secrets()
 
 client = AzureOpenAI(
     azure_endpoint=secrets["AZURE_OPENAI_ENDPOINT"],

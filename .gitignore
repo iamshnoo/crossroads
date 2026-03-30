@@ -1,8 +1,10 @@
 .venv/
+.cache/
 __pycache__/
 *.pyc
 
 secrets.json
+env.sh
 
 results/
 corrected/

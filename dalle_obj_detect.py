@@ -15,6 +15,7 @@ import re
 import math
 import base64
 from mimetypes import guess_type
+from project_paths import load_secrets
 
 arg_parser = argparse.ArgumentParser()
 arg_parser.add_argument("--type", type=str, default="vivid")
@@ -31,8 +32,7 @@ df = df[df["type"] == TYPE]
 dataset = df.to_dict(orient="records")
 print(f"Number of {TYPE} images for {CONCEPT}: {len(dataset)}")
 
-with open("secrets.json", "r") as f:
-    secrets = json.load(f)
+secrets = load_secrets()
 
 api_base = secrets["GPT4V_OPENAI_ENDPOINT"]
 api_key=secrets["GPT4V_OPENAI_API_KEY"]

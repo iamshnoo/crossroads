@@ -85,9 +85,18 @@
 # Updated config-maker.py
 
 import os
+import sys
+from pathlib import Path
+
 import pandas as pd
 import yaml
 from tqdm import tqdm
+
+ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from project_paths import data_root
 
 def create_configs(captions_csv_pair, base_image_path, latents_base_path, config_output_dir, src_country, tgt_country):
     """
@@ -165,8 +174,8 @@ if __name__ == "__main__":
     country_pairs = [(src, tgt) for src in countries for tgt in countries if src != tgt]
 
     INPUT_DIR = "results/cap_edit/edited_captions"  # Directory containing the edited captions CSV files
-    BASE_IMAGE_PATH = "/scratch/amukher6/dollar_street/"
-    LATENTS_BASE_PATH = "/scratch/amukher6/dollar_street/evals/results/cap_edit/latents/"
+    BASE_IMAGE_PATH = str(data_root())
+    LATENTS_BASE_PATH = os.path.join(str(data_root()), "evals", "results", "cap_edit", "latents")
     CONFIG_OUTPUT_DIR = "results/cap_edit/pnp-configs"
 
     for src_country, tgt_country in country_pairs:

@@ -1,19 +1,29 @@
 import os
+import sys
+from pathlib import Path
+
 import pandas as pd
 from PIL import Image
 import torch
 from tqdm import tqdm
 from transformers import InstructBlipProcessor, InstructBlipForConditionalGeneration
 
+ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from project_paths import data_root, instructblip_cache_dir
+
 # Model setup
 model_name = "Salesforce/instructblip-flan-t5-xxl"
 device = "cuda" if torch.cuda.is_available() else "cpu"
+MODEL_CACHE_DIR = instructblip_cache_dir()
 
 model = InstructBlipForConditionalGeneration.from_pretrained(
-    model_name, cache_dir="/projects/antonis/anjishnu/instructblip"
+    model_name, cache_dir=str(MODEL_CACHE_DIR)
 ).to(device)
 processor = InstructBlipProcessor.from_pretrained(
-    model_name, cache_dir="/projects/antonis/anjishnu/instructblip"
+    model_name, cache_dir=str(MODEL_CACHE_DIR)
 )
 
 
@@ -83,7 +93,7 @@ def process_artifacts(artifacts_csv, base_path, output_csv, country):
 if __name__ == "__main__":
     # List of countries to process
     countries = ["Brazil", "India", "Nigeria", "Turkey", "United States"]
-    BASE_PATH = "/scratch/amukher6/dollar_street/"
+    BASE_PATH = str(data_root())
     OUTPUT_DIR = "results/cap_edit/instruct_blip"
 
     os.makedirs(OUTPUT_DIR, exist_ok=True)

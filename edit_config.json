@@ -2,7 +2,7 @@
     "DINO_PROMPT": "vietnamese pho. bamboo mat. chopsticks. noodle. soup. rice. sauce dish. lime.",
     "BOX_TRESHOLD" : 0.25,
     "TEXT_TRESHOLD" : 0.25,
-    "LOCAL_IMAGE_PATH" : "/scratch/amukher6/dollar_street/results/dalle/plate_of_food/Vietnam/Vietnam_3.jpg",
+    "LOCAL_IMAGE_PATH" : "results/dalle/plate_of_food/Vietnam/Vietnam_3.jpg",
     "CATEGORY" : "plate_of_food",
     "STABLE_DIFF_PROMPT" : "brazilian noodles. brazilian food. table mat. chopsticks. brazilian food items.",
     "COUNTRY_1" : "Vietnam",

@@ -1,11 +1,20 @@
 import os
 import argparse
+import sys
+from pathlib import Path
+
 import pandas as pd
 import torch
 import numpy as np
 from PIL import Image
 from tqdm import tqdm
 from torchmetrics.functional.multimodal import clip_score
+
+ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from project_paths import data_root
 
 def compute_clip_scores(image1, image2, country1, country2):
     """Compute and return the CLIP score deltas for two images."""
@@ -143,7 +152,7 @@ if __name__ == "__main__":
     ]
 
     INPUT_DIR = "results/cap_edit/edited_captions"
-    BASE_IMAGE_PATH = "/scratch/amukher6/dollar_street/"
+    BASE_IMAGE_PATH = str(data_root())
     PNP_OUTPUT_BASE_PATH = "results/cap_edit/pnp-results"
     OUTPUT_DIR = "results/cap_edit/metrics"
 

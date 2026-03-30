@@ -11,21 +11,21 @@ import os
 from datasets import load_dataset
 import argparse
 from tqdm import tqdm
+from project_paths import dollarstreet_cache_dir, model_cache_dir
 
 arg_parser = argparse.ArgumentParser()
 arg_parser.add_argument("--split", type=str, default="plate_of_food")
 args = arg_parser.parse_args()
 
 SPLIT = args.split
-DATASET_CACHE_DIR = "/projects/dollarstreet/"
-dataset = load_dataset("dollarstreet", split=SPLIT, cache_dir=DATASET_CACHE_DIR)
+dataset = load_dataset("dollarstreet", split=SPLIT, cache_dir=str(dollarstreet_cache_dir()))
 
 # Load model and processor
 MODEL_NAME = "llava-v1.6-vicuna-7b-hf"
-MODEL_CACHE_DIR = f"/projects/{MODEL_NAME}"
+MODEL_CACHE_DIR = model_cache_dir(MODEL_NAME)
 
-processor = AutoProcessor.from_pretrained("llava-hf/llava-v1.6-vicuna-7b-hf")
-model = LlavaNextForConditionalGeneration.from_pretrained("llava-hf/llava-v1.6-vicuna-7b-hf", cache_dir=MODEL_CACHE_DIR).to("cuda")
+processor = AutoProcessor.from_pretrained("llava-hf/llava-v1.6-vicuna-7b-hf", cache_dir=str(MODEL_CACHE_DIR))
+model = LlavaNextForConditionalGeneration.from_pretrained("llava-hf/llava-v1.6-vicuna-7b-hf", cache_dir=str(MODEL_CACHE_DIR)).to("cuda")
 
 def ask(image, question):
     prompt = f"USER: <image>\n{question} ASSISTANT:"

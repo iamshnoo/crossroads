@@ -62,13 +62,20 @@
 
 import os
 import json
+import sys
+from pathlib import Path
+
 import pandas as pd
 from openai import OpenAI
 from tqdm import tqdm
 
-with open("secrets.json", "r") as f:
-    secrets = json.load(f)
+ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
 
+from project_paths import load_secrets
+
+secrets = load_secrets()
 client = OpenAI(api_key = secrets["OPENAI_API_KEY"])
 
 # Function to call OpenAI API

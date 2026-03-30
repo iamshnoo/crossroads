@@ -1,5 +1,8 @@
 import os
 import ast
+import sys
+from pathlib import Path
+
 import torch
 import random
 import numpy as np
@@ -16,6 +19,12 @@ from torchmetrics.functional.multimodal import clip_score
 import matplotlib.pyplot as plt
 import seaborn as sns
 
+ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from project_paths import data_root, edits_cache_dir
+
 sns.set(font_scale=1.4)
 sns.set_theme(style="whitegrid")
 sns.set_context(
@@ -25,32 +34,33 @@ sns.set_context(
 # # Model setup
 model_id = "IDEA-Research/grounding-dino-base"
 device = "cuda" if torch.cuda.is_available() else "cpu"
+CACHE_DIR = edits_cache_dir()
 
 processor = AutoProcessor.from_pretrained(
     model_id,
-    cache_dir="/projects/antonis/anjishnu/edits",
+    cache_dir=str(CACHE_DIR),
     clean_up_tokenization_spaces=True,
 )
 model = AutoModelForZeroShotObjectDetection.from_pretrained(
-    model_id, cache_dir="/projects/antonis/anjishnu/edits"
+    model_id, cache_dir=str(CACHE_DIR)
 ).to(device)
 
 # Load the inpainting pipeline and VAE with proper configuration
 pipe = StableDiffusionInpaintPipeline.from_pretrained(
     "stabilityai/stable-diffusion-2-inpainting",
     torch_dtype=torch.float16,
-    cache_dir="/projects/antonis/anjishnu/edits",
+    cache_dir=str(CACHE_DIR),
 ).to(device)
 pipe.enable_xformers_memory_efficient_attention()
 
 vae = AutoencoderKL.from_pretrained(
     "stabilityai/sd-vae-ft-mse",
     torch_dtype=torch.float16,
-    cache_dir="/projects/antonis/anjishnu/edits",
+    cache_dir=str(CACHE_DIR),
     clean_up_tokenization_spaces=True,
 ).to(device)
 pipe.scheduler = DPMSolverMultistepScheduler.from_config(
-    pipe.scheduler.config, cache_dir="/projects/antonis/anjishnu/edits"
+    pipe.scheduler.config, cache_dir=str(CACHE_DIR)
 )
 pipe.vae = vae
 
@@ -308,7 +318,7 @@ if __name__ == "__main__":
     #     ("United States", "Turkey"),
     # ]
 
-    BASE_PATH = "/scratch/amukher6/dollar_street/"
+    BASE_PATH = str(data_root())
     # print(country_matrix)
 
     # Run the process on all entries in artifacts.csv for a particular SOURCE, TARGET pair

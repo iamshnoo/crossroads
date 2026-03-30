@@ -68,6 +68,23 @@ git clone https://github.com/IDEA-Research/GroundingDINO.git
 pip install -e ./GroundingDINO
 ```
 
+Copy the example environment file and edit it for your machine:
+
+```bash
+cp env.example.sh env.sh
+source env.sh
+mkdir -p "$CROSSROADS_DOLLARSTREET_CACHE" "$CROSSROADS_MODEL_CACHE" "$CROSSROADS_INSTRUCTBLIP_CACHE" "$CROSSROADS_EDITS_CACHE"
+```
+
+Path variables used by the repo:
+
+- `CROSSROADS_DATA_ROOT`: extracted project-data root; defaults to the repo root
+- `CROSSROADS_SECRETS_FILE`: path to `secrets.json`
+- `CROSSROADS_DOLLARSTREET_CACHE`: Hugging Face cache for the Dollar Street dataset
+- `CROSSROADS_MODEL_CACHE`: cache root for LLaVA and related model weights
+- `CROSSROADS_INSTRUCTBLIP_CACHE`: cache root for InstructBLIP weights
+- `CROSSROADS_EDITS_CACHE`: cache root for editing and similarity models
+
 ## Local Files You Need
 
 Create a `secrets.json` file in the repo root:
@@ -81,7 +98,7 @@ Create a `secrets.json` file in the repo root:
 }
 ```
 
-The scripts also assume the following local inputs exist:
+The scripts assume the following local inputs exist under `CROSSROADS_DATA_ROOT`:
 
 - `results/dalle_images.csv` for DALLE Street classification and object extraction
 - `marvl/marvl_images.csv` plus the underlying MARVL image files for the MARVL scripts
@@ -89,16 +106,21 @@ The scripts also assume the following local inputs exist:
 - `corrected/*.csv` and `corrected/*.json` for the plotting and summary scripts
 - `results/dalle_objects/` intermediates for the artifact-extraction pipeline
 
-Two path assumptions are hard-coded in the current scripts:
-
-- Dollar Street HF cache: `/projects/dollarstreet/`
-- LLaVA model cache: `/projects/llava-v1.6-vicuna-7b-hf`
-
-If your machine uses different locations, edit those constants before running the scripts.
+If you extract the release tarballs somewhere other than the repo root, set `CROSSROADS_DATA_ROOT` to that extracted directory before running the scripts.
 
 ## Reproduce From Scratch
 
 If you want the original full pipeline, use this order.
+
+Recommended setup flow for a clean machine:
+
+1. Clone the repo.
+2. Download and reconstruct the release tarballs.
+3. Extract the tarballs.
+4. Set `CROSSROADS_DATA_ROOT` to the extracted data tree if it is not the repo root.
+5. Create `secrets.json` with your own credentials.
+6. Source `env.sh`.
+7. Run the scripts below.
 
 ### 1. Generate DALLE Street images
 

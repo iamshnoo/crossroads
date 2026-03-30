@@ -45,6 +45,11 @@ _ = torch.manual_seed(42)
 from torchmetrics.functional.multimodal import clip_score
 
 import random
+from project_paths import repo_path, resolve_data_path
+
+arg_parser = argparse.ArgumentParser()
+arg_parser.add_argument("--config", type=str, default="edit_config.json")
+args = arg_parser.parse_args()
 
 def generate_masks_with_grounding(image_source, boxes):
     h, w, _ = image_source.shape
@@ -87,12 +92,16 @@ pipe.scheduler = DPMSolverMultistepScheduler.from_config(pipe.scheduler.config)
 pipe.vae = vae
 pipe = pipe.to("cuda")
 
-with open("edit_config.json", "r") as f:
+config_path = Path(args.config).expanduser()
+if not config_path.is_absolute():
+    config_path = repo_path(args.config)
+
+with open(config_path, "r") as f:
     config = json.load(f)
 DINO_PROMPT = config["DINO_PROMPT"]
 BOX_TRESHOLD = config["BOX_TRESHOLD"]
 TEXT_TRESHOLD = config["TEXT_TRESHOLD"]
-local_image_path = config["LOCAL_IMAGE_PATH"]
+local_image_path = str(resolve_data_path(config["LOCAL_IMAGE_PATH"]))
 CATEGORY = config["CATEGORY"]
 STABLE_DIFF_PROMPT = config["STABLE_DIFF_PROMPT"]
 country1 = config["COUNTRY_1"]

@@ -1,10 +1,19 @@
 import os
+import sys
+from pathlib import Path
+
 import pandas as pd
 from tqdm import tqdm
 from argparse import Namespace
 import argparse
 
 from pnp_diffusers.preprocess import run
+
+ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from project_paths import data_root
 
 def process_images(artifacts_csv, base_path, save_dir, country):
     artifacts = pd.read_csv(artifacts_csv)
@@ -56,7 +65,7 @@ if __name__ == "__main__":
     if args.country == "UnitedStates":
         args.country = "United States"
 
-    BASE_PATH = "/scratch/amukher6/dollar_street/"
+    BASE_PATH = str(data_root())
     SAVE_DIR = "results/cap_edit/latents"
     COUNTRY = args.country
     print(f"Processing image latents for {COUNTRY}")

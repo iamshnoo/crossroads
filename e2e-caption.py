@@ -1,10 +1,18 @@
+import argparse
 from transformers import InstructBlipProcessor, InstructBlipForConditionalGeneration
 import torch
 from PIL import Image
 import requests
+from project_paths import instructblip_cache_dir, resolve_data_path
 
-model = InstructBlipForConditionalGeneration.from_pretrained("Salesforce/instructblip-flan-t5-xxl", cache_dir="/projects/antonis/anjishnu/instructblip")
-processor = InstructBlipProcessor.from_pretrained("Salesforce/instructblip-flan-t5-xxl", cache_dir="/projects/antonis/anjishnu/instructblip")
+parser = argparse.ArgumentParser()
+parser.add_argument("--image", type=str, default="Greece_4.jpg")
+args = parser.parse_args()
+
+MODEL_CACHE_DIR = instructblip_cache_dir()
+
+model = InstructBlipForConditionalGeneration.from_pretrained("Salesforce/instructblip-flan-t5-xxl", cache_dir=str(MODEL_CACHE_DIR))
+processor = InstructBlipProcessor.from_pretrained("Salesforce/instructblip-flan-t5-xxl", cache_dir=str(MODEL_CACHE_DIR))
 
 device = "cuda" if torch.cuda.is_available() else "cpu"
 model.to(device)
@@ -12,7 +20,7 @@ model.to(device)
 # url = "https://raw.githubusercontent.com/salesforce/LAVIS/main/docs/_static/Confusing-Pictures.jpg"
 # image = Image.open(requests.get(url, stream=True).raw).convert("RGB")
 
-image = Image.open("Greece_4.jpg").convert("RGB")
+image = Image.open(resolve_data_path(args.image)).convert("RGB")
 prompt = "A short image description:"
 inputs = processor(images=image, text=prompt, return_tensors="pt").to(device)
 

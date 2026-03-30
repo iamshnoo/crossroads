@@ -15,17 +15,16 @@ import re
 import math
 import base64
 from mimetypes import guess_type
+from project_paths import dollarstreet_cache_dir, load_secrets
 
 arg_parser = argparse.ArgumentParser()
 arg_parser.add_argument("--split", type=str, default="plate_of_food")
 args = arg_parser.parse_args()
 
 SPLIT = args.split
-DATASET_CACHE_DIR = "/projects/dollarstreet/"
-dataset = load_dataset("dollarstreet", split=SPLIT, cache_dir=DATASET_CACHE_DIR)
+dataset = load_dataset("dollarstreet", split=SPLIT, cache_dir=str(dollarstreet_cache_dir()))
 
-with open("secrets.json", "r") as f:
-    secrets = json.load(f)
+secrets = load_secrets()
 
 api_base = secrets["GPT4V_OPENAI_ENDPOINT"]
 api_key=secrets["GPT4V_OPENAI_API_KEY"]
