@@ -1,0 +1,13 @@
+.venv/
+__pycache__/
+*.pyc
+
+secrets.json
+
+results/
+corrected/
+marvl/
+
+backup.tar.gz
+dataset_dollarstreet.tar.gz
+dataset_*.tar.gz
