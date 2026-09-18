@@ -1,5 +1,9 @@
 # Crossroads of Continents: Automated Artifact Extraction for Cultural Adaptation with Large Multimodal Models
 
+[Anjishnu Mukherjee](https://iamshnoo.github.io/), Ziwei Zhu, Antonios Anastasopoulos · WACV ’25
+
+[Paper](https://www.arxiv.org/pdf/2407.02067) · [Research overview and publications](https://iamshnoo.github.io/#crossroads)
+
 Code and published assets for reproducing the Crossroads project.
 
 DALLE Street dataset: https://huggingface.co/datasets/iamshnoo/dallestreet
