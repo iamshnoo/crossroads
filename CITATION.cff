@@ -1,0 +1,41 @@
+cff-version: 1.2.0
+message: "If you use this code or data, please cite the paper below."
+type: software
+title: "Crossroads of Continents: Automated Artifact Extraction for Cultural Adaptation with Large Multimodal Models"
+authors:
+  - family-names: "Mukherjee"
+    given-names: "Anjishnu"
+    orcid: "https://orcid.org/0000-0003-4012-8466"
+  - family-names: "Zhu"
+    given-names: "Ziwei"
+  - family-names: "Anastasopoulos"
+    given-names: "Antonios"
+repository-code: "https://github.com/iamshnoo/crossroads"
+url: "https://iamshnoo.github.io/crossroads_wacv_25/"
+preferred-citation:
+  type: conference-paper
+  title: "Crossroads of Continents: Automated Artifact Extraction for Cultural Adaptation with Large Multimodal Models"
+  authors:
+    - family-names: "Mukherjee"
+      given-names: "Anjishnu"
+      orcid: "https://orcid.org/0000-0003-4012-8466"
+    - family-names: "Zhu"
+      given-names: "Ziwei"
+    - family-names: "Anastasopoulos"
+      given-names: "Antonios"
+  collection-title: "Proceedings of the Winter Conference on Applications of Computer Vision (WACV)"
+  collection-type: proceedings
+  conference:
+    name: "Winter Conference on Applications of Computer Vision (WACV)"
+  year: 2025
+  month: 2
+  start: 1755
+  end: 1764
+  url: "https://openaccess.thecvf.com/content/WACV2025/html/Mukherjee_Crossroads_of_Continents_Automated_Artifact_Extraction_for_Cultural_Adaptation_with_WACV_2025_paper.html"
+  identifiers:
+    - type: other
+      value: "arXiv:2407.02067"
+      description: arXiv preprint
+    - type: url
+      value: "https://arxiv.org/abs/2407.02067"
+      description: arXiv abstract page

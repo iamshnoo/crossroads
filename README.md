@@ -2,7 +2,7 @@
 
 [Anjishnu Mukherjee](https://iamshnoo.github.io/), Ziwei Zhu, Antonios Anastasopoulos · WACV ’25
 
-[Paper](https://www.arxiv.org/pdf/2407.02067) · [Research overview and publications](https://iamshnoo.github.io/#crossroads)
+[Paper](https://openaccess.thecvf.com/content/WACV2025/html/Mukherjee_Crossroads_of_Continents_Automated_Artifact_Extraction_for_Cultural_Adaptation_with_WACV_2025_paper.html) · [arXiv](https://arxiv.org/abs/2407.02067) · [Project page](https://iamshnoo.github.io/crossroads_wacv_25/) · [DalleStreet on Hugging Face](https://huggingface.co/datasets/iamshnoo/dallestreet) · [Dollar Street subset on Hugging Face](https://huggingface.co/datasets/iamshnoo/dollarstreet) · [Research overview and publications](https://iamshnoo.github.io/#crossroads)
 
 Code and published assets for reproducing the Crossroads project.
 
@@ -345,3 +345,16 @@ prints the final headline accuracies from those six files.
 - `results/cultureadapt/metrics/*.csv`
 
 If you can regenerate these files and they match the published release artifacts closely, you have reproduced the paper’s reported outputs.
+
+## Citation
+
+```bibtex
+@InProceedings{Mukherjee_2025_WACV,
+    author    = {Mukherjee, Anjishnu and Zhu, Ziwei and Anastasopoulos, Antonios},
+    title     = {Crossroads of Continents: Automated Artifact Extraction for Cultural Adaptation with Large Multimodal Models},
+    booktitle = {Proceedings of the Winter Conference on Applications of Computer Vision (WACV)},
+    month     = {February},
+    year      = {2025},
+    pages     = {1755-1764}
+}
+```
